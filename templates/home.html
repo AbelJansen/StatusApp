@@ -1,35 +1,6 @@
-<!DOCTYPE html>
-<html lang="nl">
+{% extends 'index.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link href="/static/css/stylesheet.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
-    <title>Strevon - Automation app</title>
-</head>
-
-<body>
-<nav class="navbar navbar-dark shadow-lg sticky-top bg-dark">
-    <div class="container-fluid w-75 m-auto">
-        <a class="navbar-brand" href="#">
-            <img src="/static/img/Streven%20-%20png.png" alt="" width="125">
-        </a>
-        {% if current_user.is_authenticated %}
-        <img class="profile-pic dropdown-toggle me-2" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-             aria-expanded="false" src={{ picture }} alt="Google profile pic"></img>
-        <ul class="dropdown-menu dropdown-menu-end me-2" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><a class="dropdown-item" href="/logout">Logout</a></li>
-        </ul>
-        {% else %}
-        <a class="text-white" href="/login">Inloggen</a>
-        {% endif %}
-    </div>
-</nav>
+{% block body %}
 <header class="bg-white shadow-sm px-4 py-3 z-index-20">
     <div class="container-fluid px-0 w-75 m-auto">
         <h3 class="mb-0 p-1">Status dashboard</h3>
@@ -41,7 +12,7 @@
         <div class="row gy-4 mt-2">
             <div class="col-lg-4">
                 <div class="card mb-0">
-                    <div class="card-header bg-dark text-white"><h5 class="text-center">MessageBird status</h5></div>
+                    <div class="card-header bg-dark text-white"><h5 class="text-center">MessageBird</h5></div>
                     <div class="card-body">
                           <ol class="list-group">
                             <li class="list-group-item d-flex justify-content-between align-items-start">
@@ -120,14 +91,12 @@
         </div>
     </div>
 </section>
-{% else %}
-<p>Eerst inloggen AUB</p>
-{% endif %}
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous"></script>
-<script src="/static/js/js.js"></script>
-</body>
 
-</html>
+{% else %}
+
+<p>Eerst inloggen AUB</p>
+
+{% endif %}
+
+{% endblock %}
+

@@ -1,6 +1,7 @@
 # Python standard libraries
 import json
 import os
+import re
 import sqlite3
 import config
 
@@ -62,11 +63,13 @@ def load_user(user_id):
 
 @app.route("/")
 def index():
-    if current_user.is_authenticated:
-        return render_template("base.html", name=current_user.name, email=current_user.email,
+    if current_user.is_authenticated and current_user.email in config.access_emails:
+        return render_template("home.html", name=current_user.name, email=current_user.email,
                                picture=current_user.profile_pic)
+    elif current_user.is_authenticated and current_user.email not in config.access_emails:
+        return render_template("noaccess.html")
     else:
-        return render_template("base.html")
+        return render_template("login.html")
 
 
 @app.route("/login")
