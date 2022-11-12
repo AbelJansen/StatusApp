@@ -29,9 +29,6 @@ GOOGLE_DISCOVERY_URL = (
     "https://accounts.google.com/.well-known/openid-configuration"
 )
 
-print(GOOGLE_CLIENT_ID)
-print(GOOGLE_CLIENT_SECRET)
-
 # Flask app setup
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY") or os.urandom(24)
@@ -66,7 +63,8 @@ def load_user(user_id):
 @app.route("/")
 def index():
     if current_user.is_authenticated:
-        return render_template("base.html", name=current_user.name, email=current_user.email, picture=current_user.profile_pic)
+        return render_template("base.html", name=current_user.name, email=current_user.email,
+                               picture=current_user.profile_pic)
     else:
         return render_template("base.html")
 
