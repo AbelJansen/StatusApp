@@ -7,3 +7,11 @@ body {
     height: 50px;
     width: 50px;
 }
+
+.nav-link {
+    color: #FEE600;
+}
+
+.active {
+    color: #FEE600!important;
+}

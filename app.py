@@ -157,5 +157,12 @@ def logout():
     return redirect(url_for("index"))
 
 
+@app.route("/workflows")
+@login_required
+def workflows():
+    return render_template("workflows.html", name=current_user.name, email=current_user.email,
+                           picture=current_user.profile_pic)
+
+
 if __name__ == "__main__":
     app.run(ssl_context="adhoc", debug=True)

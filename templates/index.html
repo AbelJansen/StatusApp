@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="nl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,23 +10,40 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
     <title>Strevon - Automation app</title>
 </head>
-
 <body>
-<nav class="navbar navbar-dark shadow-lg sticky-top bg-dark">
-    <div class="container-fluid w-75 m-auto">
+<nav class="navbar navbar-expand-lg navbar-dark shadow-lg sticky-top bg-dark">
+    <div class="container">
         <a class="navbar-brand" href="#">
             <img src="/static/img/Streven%20-%20png.png" alt="" width="125">
         </a>
-        {% if current_user.is_authenticated %}
-        <img class="profile-pic dropdown-toggle me-2" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-             aria-expanded="false" src={{ picture }} alt="Google profile pic"></img>
-        <ul class="dropdown-menu dropdown-menu-end me-2" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><a class="dropdown-item" href="/logout">Logout</a></li>
-        </ul>
-        {% else %}
-        <a class="text-white" href="/login">Inloggen</a>
-        {% endif %}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/workflows">Workflows</a>
+                </li>
+                {% if current_user.is_authenticated %}
+                <li class="nav-item dropdown ms-2">
+                    <img class="profile-pic dropdown-toggle me-2" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                         aria-expanded="false" src={{ picture }} alt="Google profile pic"></img>
+                    <ul class="dropdown-menu dropdown-menu-end me-2" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                    </ul>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Inloggen</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
     </div>
 </nav>
 {% block body %}
